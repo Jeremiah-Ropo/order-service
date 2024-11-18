@@ -14,11 +14,11 @@ import { ProductEventConsumer } from '../rabbitmq/product-event.consumer';
     RabbitMQModule.forRoot(RabbitMQModule, {
       exchanges: [
         {
-          name: 'productExchange', // Name of the exchange from which product updates will be published
-          type: 'topic',           // Exchange type (direct, topic, etc.)
+          name: 'productExchange',
+          type: 'topic',      
         },
       ],
-      uri: 'amqp://localhost:5672', // RabbitMQ server URI
+      uri: 'amqp://localhost:5672',
     }),
   ]
 })

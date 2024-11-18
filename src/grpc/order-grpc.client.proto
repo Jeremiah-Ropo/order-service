@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package order;
+
+// Order service definition
+service OrderService {
+  rpc FindOrderById (OrderIdRequest) returns (OrderResponse);
+  rpc CreateOrder (CreateOrderRequest) returns (OrderResponse);
+}
+
+// Message for Order ID request
+message OrderIdRequest {
+  string id = 1;
+}
+
+// Message for creating a Order
+message CreateOrderRequest {
+  string productIds = 1;
+  string quantity = 2;
+  double totalPrice = 3;
+}
+
+// Message for Order response
+message OrderResponse {
+  string id = 1;
+  string productIds = 2;
+  string quantity = 3;
+  double totalPrice = 4;
+}

@@ -26,8 +26,8 @@ export class OrderController {
 
   @Get()
   async findAll(
-    @Query('limit', ParseIntPipe) limit: number = 10,
-    @Query('page', ParseIntPipe) page: number = 1,
+    @Query('limit', ParseIntPipe) limit: number,
+    @Query('page', ParseIntPipe) page: number,
     @Query('productId') productId?: string,
     @Query('ownerId') ownerId?: string,
   ) {
@@ -35,6 +35,8 @@ export class OrderController {
       const query = {};
       if (productId) query['productId'] = productId;
       if (ownerId) query['ownerId'] = ownerId;
+      limit = limit ?? 10;
+      page = page ?? 1;
       return this.orderService.findAll(query, { page, limit });
     } catch (error) {
       throw new HttpException(error.message, error.statusCode);
